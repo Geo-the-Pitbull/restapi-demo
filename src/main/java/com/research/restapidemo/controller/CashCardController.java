@@ -2,6 +2,8 @@ package com.research.restapidemo.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.research.restapidemo.model.CashCard;
+import com.research.restapidemo.response.ResponseHandler;
 import com.research.restapidemo.service.CashCardService;
 
 @RestController
@@ -25,8 +28,8 @@ public class CashCardController {
     
     // Get a Cash Card
     @GetMapping("{cardId}")
-    public CashCard getCashCardDetails(@PathVariable("cardId") String cardId) {
-        return cashCardService.getCashCard(cardId);
+    public ResponseEntity<Object> getCashCardDetails(@PathVariable("cardId") String cardId) {
+       return ResponseHandler.responseBuilder("The Cash Card Details", HttpStatus.OK,cashCardService.getCashCard(cardId));
     }
     // Get All Cash Cards
     @GetMapping()
