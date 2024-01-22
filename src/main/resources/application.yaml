@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cash_card?useSSL=false
+    username: root
+    password: '@+Amb3r4now2023'
+
+
+  jpa.hibernate.ddl_auto: create
