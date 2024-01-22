@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.research.restapidemo.exception.CashCardNotFoundException;
 import com.research.restapidemo.model.CashCard;
 import com.research.restapidemo.repository.CashCardRespository;
 import com.research.restapidemo.service.CashCardService;
@@ -36,6 +37,8 @@ public class CashCardServiceImpl implements CashCardService{
 
     @Override
     public CashCard getCashCard(String cashCardId) {
+        if(cashCardRepository.findById(cashCardId).isEmpty())
+            throw new CashCardNotFoundException("Requested Cash Card does not exist");
         return cashCardRepository.findById(cashCardId).get();
     }
 

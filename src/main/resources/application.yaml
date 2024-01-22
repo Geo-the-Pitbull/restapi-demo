@@ -4,5 +4,5 @@ spring:
     username: root
     password: '@+Amb3r4now2023'
 
-
+   
   jpa.hibernate.ddl_auto: create
