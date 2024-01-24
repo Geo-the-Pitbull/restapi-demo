@@ -25,9 +25,9 @@ public class RestapiDemoApplication implements CommandLineRunner {
 		if(null == adminAccount){
 			User user = new User();
 
-			user.setEmail("admin@gmail.com");
-			user.setFirstname("admin");
-			user.setSecondname("admin");
+			user.setEmail("geovauniegolding@gmail.com");
+			user.setFirstname("Geovaunie");
+			user.setSecondname("Golding");
 			user.setRole(Role.ADMIN);
 			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 			userRepository.save(user);

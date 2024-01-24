@@ -11,6 +11,7 @@ import com.research.restapidemo.dto.JwtAuthenticationResponse;
 import com.research.restapidemo.dto.RefreshTokenRequest;
 import com.research.restapidemo.dto.SignInRequest;
 import com.research.restapidemo.dto.SignUpRequest;
+import com.research.restapidemo.dto.UserResponse;
 import com.research.restapidemo.entities.Role;
 import com.research.restapidemo.entities.User;
 import com.research.restapidemo.repository.UserRepository;
@@ -28,7 +29,7 @@ public class AuthenticationServiceImpl  implements AuthenticationService{
     private final AuthenticationManager authenticationManager;
     private final JWTService jwtService;
 
-    public User signup(SignUpRequest signUpRequest) {
+    public UserResponse signup(SignUpRequest signUpRequest) {
         User user = new User();
 
         user.setEmail(signUpRequest.getEmail());
@@ -37,7 +38,15 @@ public class AuthenticationServiceImpl  implements AuthenticationService{
         user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
-        return userRepository.save(user);
+        userRepository.save(user);
+
+        UserResponse userResponse = new UserResponse();
+        userResponse.setEmail(user.getEmail());
+        userResponse.setFirstName(user.getFirstname());
+        userResponse.setLastName(user.getSecondname());
+        userResponse.setRole(user.getRole());
+        
+        return userResponse;
     }
 
     public JwtAuthenticationResponse signin(SignInRequest signinRequest) {

@@ -10,7 +10,7 @@ import com.research.restapidemo.dto.JwtAuthenticationResponse;
 import com.research.restapidemo.dto.RefreshTokenRequest;
 import com.research.restapidemo.dto.SignInRequest;
 import com.research.restapidemo.dto.SignUpRequest;
-import com.research.restapidemo.entities.User;
+import com.research.restapidemo.dto.UserResponse;
 import com.research.restapidemo.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest) {
+    public ResponseEntity<UserResponse> signup(@RequestBody SignUpRequest signUpRequest) {
         return ResponseEntity.ok(authenticationService.signup(signUpRequest));
     }
 

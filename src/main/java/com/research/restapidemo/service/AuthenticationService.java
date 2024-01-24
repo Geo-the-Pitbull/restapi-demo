@@ -4,10 +4,10 @@ import com.research.restapidemo.dto.JwtAuthenticationResponse;
 import com.research.restapidemo.dto.RefreshTokenRequest;
 import com.research.restapidemo.dto.SignInRequest;
 import com.research.restapidemo.dto.SignUpRequest;
-import com.research.restapidemo.entities.User;
+import com.research.restapidemo.dto.UserResponse;
 
 public interface AuthenticationService {
-    User signup(SignUpRequest signUpRequest);
+    UserResponse signup(SignUpRequest signUpRequest);
     public JwtAuthenticationResponse signin(SignInRequest signinRequest);
     public JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
 }

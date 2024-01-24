@@ -1,6 +1,6 @@
 package com.research.restapidemo.controller;
 
-import java.util.List;
+// import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +33,8 @@ public class CashCardController {
     }
     // Get All Cash Cards
     @GetMapping()
-    public List<CashCard> getAllCashCards() {
-        return cashCardService.getAllCashCards();
+    public ResponseEntity<Object> getAllCashCards() {
+        return ResponseHandler.responseBuilder("All Cash Card Details", HttpStatus.OK,cashCardService.getAllCashCards());
     }
     
     @PostMapping

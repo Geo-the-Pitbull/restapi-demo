@@ -30,6 +30,52 @@ public class User implements UserDetails {
 
     private Role role;
 
+    //Empty Constructor Class
+    public User() {
+    }
+
+    public User(String firstname, String secondname, String email, String password, String role) {
+        this.firstname = firstname;
+        this.secondname = secondname;
+        this.email = email;
+        this.password = password;
+        this.role = Role.valueOf(role);
+    }
+
+    //Getters
+    public String getFirstname() {
+        return firstname;
+    }
+    public String getSecondname() {
+        return secondname;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public String getRole() {
+        return role.name();
+    }
+
+    //Setters
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    public void setSecondname(String secondname) {
+        this.secondname = secondname;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
        return List.of(new SimpleGrantedAuthority(role.name()));
