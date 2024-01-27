@@ -2,6 +2,8 @@ package com.research.restapidemo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,11 +15,15 @@ public class CashCard {
     private String cardName;
     private String cardAmount;
 
+    @ManyToOne
+    @JoinColumn(name = "family_id")
+    private FamilyDetail familyId;
+   
     // Empty Constructor Class
     public CashCard() {
     }
 
-    public CashCard(String cardId, String cardName, String cardAmount) {
+    public CashCard(String cardId, String cardName, String cardAmount, FamilyDetail familyId) {
         this.cardId = cardId;
         this.cardName = cardName;
         this.cardAmount = cardAmount;
@@ -33,7 +39,10 @@ public class CashCard {
     public String getCardAmount() {
         return cardAmount;
     }
-
+    public FamilyDetail getFamilyId() {
+        return familyId;
+    }
+    
     // Setters
     public void setCardId(String cardId) {
         this.cardId = cardId;

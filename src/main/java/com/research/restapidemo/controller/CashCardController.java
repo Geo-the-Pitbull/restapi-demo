@@ -4,6 +4,7 @@ package com.research.restapidemo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.research.restapidemo.service.CashCardService;
 
 @RestController
 @RequestMapping("/cashcard")
+@CrossOrigin(origins = "*/*", maxAge = 3600)
 public class CashCardController {
 
     CashCardService cashCardService;
@@ -37,18 +39,21 @@ public class CashCardController {
         return ResponseHandler.responseBuilder("All Cash Card Details", HttpStatus.OK,cashCardService.getAllCashCards());
     }
     
+    //Create a Cash Card
     @PostMapping
     public String createCashCardDetails(@RequestBody CashCard cashCard) {
         cashCardService.createCashCard(cashCard);
         return "Cash Card Created Successfully";
     }
 
+    // Update a Cash Card Detail
     @PutMapping
     public String updateCashCardDetails(@RequestBody CashCard cashCard) {
         cashCardService.updateCashCard(cashCard);
         return "Cash Card Updated Successfully";
     }
 
+    // Delete a Cash Card
     @DeleteMapping("{cardId}")
     public String deleteCashCardDetails(@PathVariable("cardId") String cardId) {
         cashCardService.deleteCashCard(cardId);
