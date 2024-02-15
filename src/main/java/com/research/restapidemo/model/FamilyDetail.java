@@ -18,7 +18,7 @@ public class FamilyDetail {
     private String noOfPersons;
     private String location;
 
-    @OneToMany(mappedBy = "family_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "familyId", cascade = CascadeType.ALL)
     private List<CashCard> cashCard;
 
     // Empty Constructor Class
